@@ -2,12 +2,14 @@ const dotenv = require('dotenv').config()
 const express = require('express')
 //const connectDB = require('./config/connectDB')
 const mongoose = require("mongoose");
+const Task = require('./model/taskModel');
 
 const app = express()
 
 
 
 
+// mongoDB connect 
 mongoose.connect(process.env.MONGO_URI)
         .then(()=> {
             app.listen(PORT,  ()=> {
@@ -25,8 +27,29 @@ mongoose.connect(process.env.MONGO_URI)
 //connectDB();
 
 
+
+
+
+// Route or simple link
 app.get('/', (req, res)=>{
-    res.send('Home Page')
+    res.send('Home Page is OK')
+})
+
+// MIDDLEWARE FUNC to access mongoDB database
+
+app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+   
+
+// CREATE A TASK
+
+app.post('/api/tasks', async(req, res) => {
+    try {
+        const task = await Task.create(req.body)
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
 })
 
 
@@ -38,7 +61,9 @@ app.get('/about', (req, res)=>{
 
 /* express server create 
     same as here also
-*/
+*/ 
+
+// Port connect
 const PORT = process.env.PORT || 5000
 //app.listen(PORT,  ()=> {
   //  console.log(`Server is runing on port:${PORT}`)
