@@ -7,25 +7,25 @@ const router = express.Router()
 
 
 
-router.post('/api/tasks', createTask)
+router.post('/', createTask)
 
 
 // Read Data from moongoDB 
 
-router.get('/api/tasks', getTasks)
+router.get('/', getTasks)
 
 
 // router for single task params mean ID etc
 
-router.get('/api/tasks/:id', getTask)
+router.get('/', getTask)
 
 
 // delete task
 
-router.delete('/api/tasks/:id', deleteTask)
+router.delete('/:id', deleteTask)
 
 // update task
 
-router.put('/api/tasks/:id', updateTask)
+router.put('/:id', updateTask)
 
 module.exports = router
