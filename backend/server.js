@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Route or simple link
 app.get('/', (req, res)=>{
-    res.send('Home Page is OK')
+    res.send('Home Page is OK2')
 })
 
 
