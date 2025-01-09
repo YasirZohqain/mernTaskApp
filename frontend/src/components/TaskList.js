@@ -2,8 +2,10 @@
 
 const TaskList = () => {
   return (
-    <div>TaskList</div>
+    <div>TaskLists</div>
   )
 }
 
-export default TaskList
+export default TaskList;
+
+
