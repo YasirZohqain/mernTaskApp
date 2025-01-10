@@ -1,8 +1,11 @@
 
 
-const TaskForm = () => {
+const TaskForm = (createTask, handleInputChnage, name) => {
   return (
-    <div>TaskForm  </div>
+   <form className="task-form" onSubmit={createTask}>
+      <input type="text" name="name" value={name} placeholder="Task Add Here" onChange={handleInputChnage}/>
+      <button type="submit">Add</button>
+   </form>
   )
 }
 
